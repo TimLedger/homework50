@@ -7,10 +7,56 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style> 
+    .movie-card {
+      display: inline-block; 
+      border: 1px solid #ddd;
+      margin: 10px;
+      padding: 10px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center; 
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .movie-card img {
+      max-width: 100%;
+      height: 300px;
+      flex-grow: 1;
+    }
+
+    .movie-info {
+      padding-top: 10px; 
+    }
+  </style>
 </head>
 <body>
 
   <div id="moviesCard"></div>
 
+  <script type="text/babel">
+    const Movie = (props) => {  
+    return (
+      <div className="movie-card">
+        <img src={props.poster} alt={props.title} />
+        <div className="movie-info">
+          <h2>{props.title}</h2>
+          <p>{props.year}</p>
+        </div>
+      </div>
+    );
+    };
+       
+    const movies = (
+        <div>
+            <Movie title="Бегущий по лезвию 2049" year={2017} poster="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/96cd69a1-773a-43ea-824a-c3858938d45d/orig" />
+            <Movie title="Достучаться до небес" year={1997} poster="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/3fb781cd-2b98-4072-b102-311661121a2e/orig"/>
+            <Movie title="1+1 / Неприкасаемые" year={2011} poster="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/4c78b2e3-ffed-4985-bbc2-642952c92f5e/orig"/>
+        </div> 
+    );
+ 
+    ReactDOM.render(movies, document.getElementById('moviesCard')); 
+    </script> 
 </body>
 </html>
