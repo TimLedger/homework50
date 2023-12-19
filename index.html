@@ -33,9 +33,48 @@
 </head>
 <body>
 
-  <div id="moviesCard"></div>
+  <div id="page"></div>
 
   <script type="text/babel">
+    
+    const Header = () => { 
+      return (
+        <header>
+          <h1>Киношки</h1>
+        </header>
+      );
+    };
+  
+    const Sidebar = () => {  
+      return (
+          <aside className="sidebar">
+          <h2>Меню навигации</h2> 
+          <nav>
+            <ul>
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">О нас</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
+          </aside> 
+      );
+    };
+    
+    const Content = () => {   
+        return (
+          <div id="moviesCard"></div>
+        );
+    }; 
+
+    const Footer = () => { 
+      return (
+        <footer>
+          <p>© 2023 Сайт с киношками. Все права защищены.</p>
+        </footer>
+      ); 
+    };
+    
     const Movie = (props) => {  
     return (
       <div className="movie-card">
@@ -47,7 +86,7 @@
       </div>
     );
     };
-       
+
     const movies = (
         <div>
             <Movie title="Бегущий по лезвию 2049" year={2017} poster="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/96cd69a1-773a-43ea-824a-c3858938d45d/orig" />
@@ -56,7 +95,19 @@
         </div> 
     );
  
+    const app = (
+      <div>
+        <Header />
+        <div className="main-content">
+          <Sidebar />
+          <Content />
+        </div>
+        <Footer />
+      </div>
+    ); 
+        
+    ReactDOM.render(app, document.getElementById('page')); 
     ReactDOM.render(movies, document.getElementById('moviesCard')); 
-    </script> 
+    </script>  
 </body>
 </html>
